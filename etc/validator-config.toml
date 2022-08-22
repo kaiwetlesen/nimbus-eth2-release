@@ -1,0 +1,8 @@
+# Allows Nimbus Eth2 to run in the background without prompting for input:
+non-interactive = true
+
+# URL to a web3 execution client:
+beacon-node = "http://127.0.0.1:5052"
+
+# See `nimbus_validator_client --help` for additional options, or visit
+# https://nimbus.guide for an in-depth guide into the configuration.

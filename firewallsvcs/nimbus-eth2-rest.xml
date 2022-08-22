@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Nimbus Eth2 REST</short>
+  <description>
+    This service is used by Nimbus Eth2 to allow connections to the Nimbus
+    Beacon node's REST endpoint. Enable this service to allow access to this
+    port in the given zone.
+
+	Note: it is generally not advised to open this port to the open internet.
+  </description>
+  <!-- Eth2 Peering: -->
+  <port protocol="tcp" port="5052"/>
+  <port protocol="udp" port="5052"/>
+</service>

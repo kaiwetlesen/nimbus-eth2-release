@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Nimbus Eth2</short>
+  <description>
+    These services are the recommended set of services which should be open to
+    operate a fully functional Nimbus Consensus (a.k.a. Eth2) client. This
+    currently includes all ports to operate the peering mechanisms, as well as
+    the REST endpoint. Enable these ports to run Nimbus Eth2 in a default
+    configuration.
+
+    Note: those operating a public facing Nimbus node may prefer to proxy or
+    otherwise restrict access to the REST services as running Nimbus nodes
+    represents a considerable investment. For those persons, it is recommended
+    to enable the `nimbus-eth2-peering` service only and let the REST services
+    reside behind the firewall.
+  </description>
+  <include service="nimbus-eth2-peering"/>
+  <include service="nimbus-eth2-rest"/>
+</service>

@@ -1,0 +1,19 @@
+# NIMBUS ETH2 STARTUP OPTIONS
+# This file contains the default startup options bundled into this package for
+# the Nimbus Ethereum 2 client. By default, the largesse of settings come from
+# Nimbus internal defaults. Use these options in conjunction with Nimbus
+# configuration files to tailor your installation to spec.
+
+NIMBUS_ETH2_DATADIR="/var/lib/nimbus-eth2"
+
+# Beacon chain client options:
+NIMBUS_ETH2_BEACON_OPTIONS="--config-file=/etc/nimbus-eth2/beacon-config.toml"
+
+# External validator options:
+NIMBUS_ETH2_VALIDATOR_OPTIONS="--config-file=/etc/nimbus-eth2/validator-config.toml"
+
+# Signing client options:
+NIMBUS_ETH2_SIGNING_OPTIONS=""
+
+# Light client options:
+NIMBUS_ETH2_LIGHTCLIENT_OPTIONS=""

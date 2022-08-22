@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Nimbus Eth2 Peering</short>
+  <description>
+    This service enables the Nimbus Eth2 client to establish typical
+    peer-to-peer connections. This currently includes peer-to-peer connections
+    with other Ethereum2-compatible consensus clients. Enable these ports for
+    any system which will participate in an Ethereum-compatible network which
+    provides state snapshots.
+  </description>
+  <include service="nimbus-peering-network"/>
+</service>

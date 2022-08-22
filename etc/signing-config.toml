@@ -1,0 +1,5 @@
+# Allows Nimbus Eth2 to run in the background without prompting for input:
+non-interactive = true
+
+# See `nimbus_sigining_node --help` for additional options, or visit
+# https://nimbus.guide for an in-depth guide into the configuration.
