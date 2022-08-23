@@ -7,8 +7,8 @@ Documentation=https://github.com/status-im/nimbus-eth2/
 [Service]
 Type=simple
 EnvironmentFile=-/etc/sysconfig/nimbus-eth2
-ExecStart=/usr/bin/nimbus_beacon_node --data-dir=$NIMBUS_ETH2_DATADIR $NIMBUS_ETH2_BEACON_OPTIONS
-ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/nimbus_beacon_node --data-dir=${NIMBUS_ETH2_DATADIR} ${NIMBUS_ETH2_BEACON_OPTIONS}
+ExecReload=/usr/bin/kill -HUP ${MAINPID}
 UMask=0066
 Restart=on-failure
 User=nimbus-eth2
