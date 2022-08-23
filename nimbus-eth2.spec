@@ -130,11 +130,11 @@ set -m
 
 
 %pre
-if ! getent group nimbus &> /dev/null; then
-    groupadd -r nimbus
+if ! getent group %{name} &> /dev/null; then
+    groupadd -r %{name}
 fi
-if ! getent passwd nimbus &> /dev/null; then
-    useradd -r -g nimbus -m -d %{_sharedstatedir}/nimbus -k /dev/null nimbus
+if ! getent passwd %{name} &> /dev/null; then
+    useradd -r -g %{name} -m -d %{_sharedstatedir}/%{name} -k /dev/null %{name}
 fi
 
 

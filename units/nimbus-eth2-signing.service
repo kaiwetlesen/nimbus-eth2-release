@@ -11,8 +11,8 @@ ExecStart=/usr/bin/nimbus_signing_node --data-dir=$NIMBUS_ETH2_DATADIR $NIMBUS_E
 ExecReload=/usr/bin/kill -HUP $MAINPID
 UMask=0066
 Restart=on-failure
-User=nimbus
-Group=nimbus
+User=nimbus-eth2
+Group=nimbus-eth2
 LimitNOFILE=16384
 
 [Install]
