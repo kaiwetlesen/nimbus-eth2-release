@@ -1,3 +1,7 @@
+# Disable the debug package as we don't provide it:
+%global debug_package %{nil}
+# TODO: rig up debug package support with golang.
+
 # Globals description:
 # Target SO Version (target_sover): Indicates the current library version.
 # Target Version (target_sover): Indicates the current shared-object ABI version, should correspond to major version of the library.
@@ -58,7 +62,7 @@ set -m
 
 %install
 %define build_srcdir  %{_builddir}/%{name}-%{version}
-%define suppl_srcdir   %{_builddir}/%{name}-release-%{spec_suppl_ver}
+%define suppl_srcdir   %{_builddir}/%{name}-release-%{supver}
 %{__mkdir} -p \
 	%{buildroot}%{_bindir}/ \
 	%{buildroot}%{_datadir}/%{name}/ \
@@ -66,22 +70,23 @@ set -m
 	%{buildroot}%{_datadir}/doc/%{name}-utils/ \
 	%{buildroot}%{_datadir}/licenses/%{name}/
 %{__rm} scripts/.gitignore
-%{__install} -m 0755 -D -s %{build_srcdir}/build/ncli_*       -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/nimbus_*     -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/logtrace     -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/wss_sim      -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D    %{build_srcdir}/run-*              -t %{buildroot}%{_datadir}/%{name}
-%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.sh       -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.py       -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0644 -D    %{build_srcdir}/scripts/*.json     -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*          -t %{buildroot}%{_datadir}/licenses/%{name}
-%{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md       -t %{buildroot}%{_datadir}/doc/%{name}
-%{__install} -m 0644 -D    %{build_srcdir}/README.md          -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md     -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
-%{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service    -t %{buildroot}%{_prefix}/lib/systemd/system
-%{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml -t %{buildroot}%{_prefix}/lib/firewalld/services
-%{__install} -m 0644 -D    %{suppl_srcdir}/etc/%{name}/*      -t %{buildroot}%{_sysconfdir}/%{name}
-%{__install} -m 0644 -D    %{suppl_srcdir}/sysconfig/%{name}  -T %{buildroot}%{_sysconfdir}/sysconfig/%{name}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/ncli_*           -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/nimbus_*         -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/logtrace         -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/deposit_contract -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/wss_sim          -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D    %{build_srcdir}/run-*                  -t %{buildroot}%{_datadir}/%{name}
+%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.sh           -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.py           -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0644 -D    %{build_srcdir}/scripts/*.json         -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*              -t %{buildroot}%{_datadir}/licenses/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md           -t %{buildroot}%{_datadir}/doc/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md         -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
+%{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service        -t %{buildroot}%{_prefix}/lib/systemd/system
+%{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml     -t %{buildroot}%{_prefix}/lib/firewalld/services
+%{__install} -m 0644 -D    %{suppl_srcdir}/etc/*                  -t %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -m 0644 -D    %{suppl_srcdir}/sysconfig/%{name}      -T %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
 
 %{?ldconfig_scriptlets}
@@ -98,8 +103,9 @@ set -m
 %{_datadir}/%{name}/run-*
 %{_datadir}/%{name}/scripts/*
 %{_sysconfdir}/%{name}/*
+%{_sysconfdir}/sysconfig/%{name}
 %{_prefix}/lib/systemd/system/*
-%{_prefix}/lib/firewalld/system/*
+%{_prefix}/lib/firewalld/services/*
 
 # Utils:
 #  build/logtrace
