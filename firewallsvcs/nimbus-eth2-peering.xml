@@ -8,5 +8,5 @@
     any system which will participate in an Ethereum-compatible network which
     provides state snapshots.
   </description>
-  <include service="nimbus-peering-network"/>
+  <include service="nimbus-eth2-peering-network"/>
 </service>
