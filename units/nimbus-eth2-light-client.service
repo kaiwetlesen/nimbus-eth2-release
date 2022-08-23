@@ -7,7 +7,7 @@ Documentation=https://github.com/status-im/nimbus-eth2/
 [Service]
 Type=simple
 EnvironmentFile=-/etc/sysconfig/nimbus-eth2
-ExecStart=/usr/bin/nimbus_light_client --data-dir $NIMBUS_ETH2_DATADIR $NIMBUS_ETH2_LIGHTCLIENT_OPTIONS
+ExecStart=/usr/bin/nimbus_light_client --data-dir=$NIMBUS_ETH2_DATADIR $NIMBUS_ETH2_LIGHTCLIENT_OPTIONS
 ExecReload=/usr/bin/kill -HUP $MAINPID
 UMask=0066
 Restart=on-failure
