@@ -71,11 +71,13 @@ set -m
 %{__install} -m 0755 -D -s %{build_srcdir}/build/logtrace     -t %{buildroot}%{_bindir}
 %{__install} -m 0755 -D -s %{build_srcdir}/build/wss_sim      -t %{buildroot}%{_bindir}
 %{__install} -m 0755 -D    %{build_srcdir}/run-*              -t %{buildroot}%{_datadir}/%{name}
-%{__install} -m 0755 -D    %{build_srcdir}/scripts/*          -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0755 -D    %{build_srcdir}/LICENSE-*          -t %{buildroot}%{_datadir}/licenses/%{name}
-%{__install} -m 0755 -D    %{build_srcdir}/CHANGELOG.md       -t %{buildroot}%{_datadir}/doc/%{name}
-%{__install} -m 0755 -D    %{build_srcdir}/README.md          -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
-%{__install} -m 0755 -D    %{build_srcdir}/ncli/README.md     -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
+%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.sh       -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.py       -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0644 -D    %{build_srcdir}/scripts/*.json     -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*          -t %{buildroot}%{_datadir}/licenses/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md       -t %{buildroot}%{_datadir}/doc/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/README.md          -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md     -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
 %{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service    -t %{buildroot}%{_prefix}/lib/systemd/system
 %{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml -t %{buildroot}%{_prefix}/lib/firewalld/services
 %{__install} -m 0644 -D    %{suppl_srcdir}/etc/%{name}/*      -t %{buildroot}%{_sysconfdir}/%{name}
