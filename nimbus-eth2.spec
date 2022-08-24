@@ -6,11 +6,11 @@
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
 %define pkgver %{?target_pkgver}%{!?target_pkgver:22.8.0}
-%define supver %{?target_supver}%{!?target_supver:0.0.1}
+%define supver %{?target_supver}%{!?target_supver:0.1.0}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
 Version:    %{pkgver}
-Release:    0%{?dist}
+Release:    1%{?dist}
 Summary:    An Ethereum client implementation that strives to be as lightweight as possible
 
 License:    MIT and Apache2
@@ -96,18 +96,16 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
 %files
 %license LICENSE-MIT LICENSE-APACHEv2
 %doc README-nimbus.md CHANGELOG.md
-%{_bindir}/nimbus_*
-%{_datadir}/%{name}/run-*
-%{_datadir}/%{name}/scripts/*
-%{_sysconfdir}/%{name}/*
-%{_sysconfdir}/sysconfig/%{name}
-%{_prefix}/lib/systemd/system/*
-%{_prefix}/lib/firewalld/services/*
 %config(noreplace) %{_sysconfdir}/%{name}/beacon-config.toml
 %config(noreplace) %{_sysconfdir}/%{name}/light-beacon-config.toml
 %config(noreplace) %{_sysconfdir}/%{name}/signing-config.toml
 %config(noreplace) %{_sysconfdir}/%{name}/validator-config.toml
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_bindir}/nimbus_*
+%{_datadir}/%{name}/run-*
+%{_datadir}/%{name}/scripts/*
+%{_prefix}/lib/systemd/system/*
+%{_prefix}/lib/firewalld/services/*
 
 # Utils:
 #  build/logtrace
@@ -141,6 +139,9 @@ fi
 
 
 %changelog
+* Wed Aug 24 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-1%{?dist}
+- Marked configs as irreplaceable
+- Removed duplicate accounting for configs
 * Tue Aug 23 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-0%{?dist}
 - Bumped to to Nimbus Eth2 v22.8.0
 - Enabled release mode for future Nimbus builds
