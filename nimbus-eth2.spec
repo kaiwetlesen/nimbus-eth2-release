@@ -5,7 +5,7 @@
 # Globals description:
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
-%define pkgver %{?target_pkgver}%{!?target_pkgver:22.7.0}
+%define pkgver %{?target_pkgver}%{!?target_pkgver:22.8.0}
 %define supver %{?target_supver}%{!?target_supver:0.0.1}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
@@ -50,12 +50,11 @@ The %{name}-sim package contains simulation software for conducting research wit
 git clone --bare -b v%{version} https://github.com/status-im/%{name}.git .git
 git init
 git checkout -f -b %{spec_branch} tags/v%{version}
-git submodule update --init --recursive --jobs 16
+git submodule update --init --recursive
 
 
 %build
-set -m
-%__make -j16
+NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
 
 
 %install
@@ -139,5 +138,6 @@ fi
 %changelog
 * Tue Aug 23 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-0%{?dist}
 - Bumped to to Nimbus Eth2 v22.8.0
+- Enabled release mode for future Nimbus builds
 * Thu Aug 18 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.7.0-0%{?dist}
 - Initial specification file
