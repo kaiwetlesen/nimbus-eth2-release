@@ -1,6 +1,6 @@
 # Disable the debug package as we don't provide it:
 %global debug_package %{nil}
-# TODO: rig up debug package support with golang.
+# TODO: rig up debug package support with Nimbus.
 
 # Globals description:
 # Target Version (target_pkgver): Indicates the current package version.
@@ -103,7 +103,11 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
 %{_sysconfdir}/sysconfig/%{name}
 %{_prefix}/lib/systemd/system/*
 %{_prefix}/lib/firewalld/services/*
-%config(noreplace) %{_sysconfdir}/%{name}/* %{_sysconfdir}/sysconfig/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/beacon-config.toml
+%config(noreplace) %{_sysconfdir}/%{name}/light-beacon-config.toml
+%config(noreplace) %{_sysconfdir}/%{name}/signing-config.toml
+%config(noreplace) %{_sysconfdir}/%{name}/validator-config.toml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 
 # Utils:
 #  build/logtrace
