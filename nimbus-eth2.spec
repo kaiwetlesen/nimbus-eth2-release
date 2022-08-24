@@ -137,5 +137,7 @@ fi
 
 
 %changelog
+* Tue Aug 23 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-0%{?dist}
+- Bumped to to Nimbus Eth2 v22.8.0
 * Thu Aug 18 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.7.0-0%{?dist}
 - Initial specification file
