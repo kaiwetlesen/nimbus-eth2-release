@@ -3,11 +3,9 @@
 # TODO: rig up debug package support with golang.
 
 # Globals description:
-# Target SO Version (target_sover): Indicates the current library version.
-# Target Version (target_sover): Indicates the current shared-object ABI version, should correspond to major version of the library.
-# Target Version (target_ver): Indicates the current package version.
+# Target Version (target_pkgver): Indicates the current package version.
+# Target Version (target_supver): Indicates the supplemental files package version.
 %define pkgver %{?target_pkgver}%{!?target_pkgver:22.7.0}
-%define sover  %{?target_sover}%{!?target_sover:0}
 %define supver %{?target_supver}%{!?target_supver:0.0.1}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
