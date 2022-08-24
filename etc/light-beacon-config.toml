@@ -1,9 +1,9 @@
 # This must be set if intending to interface Nimbus with an execution client:
 # Hint: You will interface Nimbus with an execution client and want this set up.
-# jwt-secret = "/etc/nimbus-eth2/jwt-secret.json"
+jwt-secret = "/etc/nimbus-eth2/jwt.hex"
 
 # URL to a web3 execution client:
-# web3-url = "https://my-client.eth.infra.internal"
+web3-url = ["http://localhost:8551"]
 
 # See `nimbus_light_client --help` for additional options, or visit
 # https://nimbus.guide for an in-depth guide into the configuration.

@@ -4,5 +4,8 @@ non-interactive = true
 # URL to a web3 execution client:
 beacon-node = "http://127.0.0.1:5052"
 
+# Tip: before starting this client, be sure to edit beacon-config.toml and turn
+# on the REST endpoint!
+
 # See `nimbus_validator_client --help` for additional options, or visit
 # https://nimbus.guide for an in-depth guide into the configuration.
