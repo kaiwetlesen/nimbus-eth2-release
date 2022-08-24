@@ -20,7 +20,7 @@ URL:        https://nimbus.team
 Source0:    https://github.com/status-im/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source1:    https://github.com/kaiwetlesen/%{name}-release/archive/refs/tags/v%{supver}.tar.gz
 
-BuildRequires:  make, cmake, gcc, gcc-c++, binutils, git, redhat-lsb-core
+BuildRequires:  make, cmake, gcc, gcc-c++, binutils, git
 
 %description
 Nimbus is a client implementation that strives to be as lightweight as
