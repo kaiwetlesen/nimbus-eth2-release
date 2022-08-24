@@ -103,6 +103,7 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
 %{_sysconfdir}/sysconfig/%{name}
 %{_prefix}/lib/systemd/system/*
 %{_prefix}/lib/firewalld/services/*
+%config(noreplace) %{_sysconfdir}/%{name}/* %{_sysconfdir}/sysconfig/%{name}
 
 # Utils:
 #  build/logtrace
