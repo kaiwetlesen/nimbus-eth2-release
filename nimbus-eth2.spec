@@ -5,12 +5,12 @@
 # Globals description:
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
-%define pkgver %{?target_pkgver}%{!?target_pkgver:22.8.0}
+%define pkgver %{?target_pkgver}%{!?target_pkgver:22.8.2}
 %define supver %{?target_supver}%{!?target_supver:0.1.0}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
 Version:    %{pkgver}
-Release:    1%{?dist}
+Release:    0%{?dist}
 Summary:    An Ethereum client implementation that strives to be as lightweight as possible
 
 License:    MIT and Apache2
@@ -139,6 +139,8 @@ fi
 
 
 %changelog
+* Thu Sep 1  2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.2-0%{?dist}
+- Bumped version to Nimbus 22.8.2
 * Wed Aug 24 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-1%{?dist}
 - Marked configs as irreplaceable
 - Removed duplicate accounting for configs
