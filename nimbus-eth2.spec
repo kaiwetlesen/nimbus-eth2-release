@@ -5,7 +5,7 @@
 # Globals description:
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
-%define pkgver %{?target_pkgver}%{!?target_pkgver:22.8.2}
+%define pkgver %{?target_pkgver}%{!?target_pkgver:22.9.0}
 %define supver %{?target_supver}%{!?target_supver:0.1.0}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
@@ -139,6 +139,8 @@ fi
 
 
 %changelog
+* Mon Sep 12 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.9.0-0%{?dist}
+- Bumped to high-priority bug fix version 22.9.0
 * Thu Sep 1  2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.2-0%{?dist}
 - Bumped version to Nimbus 22.8.2
 * Wed Aug 24 2022 Kai Wetlesen <kaiw@semiotic.ai> - 22.8.0-1%{?dist}
