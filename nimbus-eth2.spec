@@ -115,6 +115,10 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc) gnosis-build
 %{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*              -t %{buildroot}%{_datadir}/licenses/%{name}
 %{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md           -t %{buildroot}%{_datadir}/doc/%{name}
 %{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-light/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-gnosis/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-validator/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-signing/README-nimbus.md
 %{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md         -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
 %{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service        -t %{buildroot}%{_prefix}/lib/systemd/system
 %{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml     -t %{buildroot}%{_prefix}/lib/firewalld/services
@@ -138,7 +142,6 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc) gnosis-build
 %{_datadir}/%{name}/run-*
 %{_datadir}/%{name}/scripts/run-beacon-node.sh
 %{_prefix}/lib/systemd/system/nimbus-eth2-beacon.service
-%{_prefix}/lib/firewalld/services/*
 %{_prefix}/lib/firewalld/services/nimbus-eth2.xml
 %{_prefix}/lib/firewalld/services/nimbus-eth2-rest.xml
 %{_prefix}/lib/firewalld/services/nimbus-eth2-peering.xml

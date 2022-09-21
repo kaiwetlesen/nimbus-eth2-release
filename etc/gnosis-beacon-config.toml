@@ -1,0 +1,21 @@
+# Allows Nimbus Eth2 to run in the background without prompting for input:
+non-interactive = true
+
+# This must be set if intending to interface Nimbus with an execution client:
+# Hint: You will interface Nimbus with an execution client and want this set up.
+jwt-secret = "/etc/nimbus-eth2/jwt.hex"
+
+# URL to a web3 execution client:
+web3-url = ["http://localhost:8551"]
+
+# The following settings configure Nimbus as a beacon-only client. To instead
+# operate a validator, either set REST to true and start the stand-alone
+# validator or set in-process-validators to true:
+rest = false
+in-process-validators = false
+
+# Metrics control:
+metrics = true
+
+# See `nimbus_beacon_client --help` for additional options, or visit
+# https://nimbus.guide for an in-depth guide into the configuration.

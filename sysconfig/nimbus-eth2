@@ -9,6 +9,9 @@ NIMBUS_ETH2_DATADIR="/var/lib/nimbus-eth2"
 # Beacon chain client options:
 NIMBUS_ETH2_BEACON_OPTIONS="--config-file=/etc/nimbus-eth2/beacon-config.toml"
 
+# Gnosis specific beacon chain client options:
+NIMBUS_ETH2_GNOSIS_BEACON_OPTIONS="--config-file=/etc/nimbus-eth2/gnosis-beacon-config.toml"
+
 # External validator options:
 NIMBUS_ETH2_VALIDATOR_OPTIONS="--config-file=/etc/nimbus-eth2/validator-config.toml"
 
