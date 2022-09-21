@@ -103,27 +103,25 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc) gnosis-build
 	%{buildroot}%{_datadir}/doc/%{name}-utils/ \
 	%{buildroot}%{_datadir}/licenses/%{name}/
 %{__rm} scripts/.gitignore
-%{__install} -m 0755 -D -s %{build_srcdir}/build/ncli_*           -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/nimbus_*         -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/logtrace         -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/deposit_contract -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D -s %{build_srcdir}/build/wss_sim          -t %{buildroot}%{_bindir}
-%{__install} -m 0755 -D    %{build_srcdir}/run-*                  -t %{buildroot}%{_datadir}/%{name}
-%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.sh           -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0755 -D    %{build_srcdir}/scripts/*.py           -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0644 -D    %{build_srcdir}/scripts/*.json         -t %{buildroot}%{_datadir}/%{name}/scripts
-%{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*              -t %{buildroot}%{_datadir}/licenses/%{name}
-%{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md           -t %{buildroot}%{_datadir}/doc/%{name}
-%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-light/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-gnosis/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-validator/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/README.md              -T %{buildroot}%{_datadir}/doc/%{name}-signing/README-nimbus.md
-%{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md         -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
-%{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service        -t %{buildroot}%{_prefix}/lib/systemd/system
-%{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml     -t %{buildroot}%{_prefix}/lib/firewalld/services
-%{__install} -m 0644 -D    %{suppl_srcdir}/etc/*                  -t %{buildroot}%{_sysconfdir}/%{name}
-%{__install} -m 0644 -D    %{suppl_srcdir}/sysconfig/%{name}      -T %{buildroot}%{_sysconfdir}/sysconfig/%{name}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/ncli_*               -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/nimbus_*             -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/logtrace             -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/deposit_contract     -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D -s %{build_srcdir}/build/wss_sim              -t %{buildroot}%{_bindir}
+%{__install} -m 0755 -D    %{build_srcdir}/run-*                      -t %{buildroot}%{_datadir}/%{name}
+%{__install} -m 0755 -D    %{build_srcdir}/scripts/run-beacon-node.sh -t %{buildroot}%{_datadir}/%{name}/scripts
+%{__install} -m 0644 -D    %{build_srcdir}/LICENSE-*                  -t %{buildroot}%{_datadir}/licenses/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/CHANGELOG.md               -t %{buildroot}%{_datadir}/doc/%{name}
+%{__install} -m 0644 -D    %{build_srcdir}/README.md                  -T %{buildroot}%{_datadir}/doc/%{name}/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md                  -T %{buildroot}%{_datadir}/doc/%{name}-light/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md                  -T %{buildroot}%{_datadir}/doc/%{name}-gnosis/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md                  -T %{buildroot}%{_datadir}/doc/%{name}-validator/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/README.md                  -T %{buildroot}%{_datadir}/doc/%{name}-signing/README-nimbus.md
+%{__install} -m 0644 -D    %{build_srcdir}/ncli/README.md             -T %{buildroot}%{_datadir}/doc/%{name}-utils/README-ncli.md
+%{__install} -m 0644 -D    %{suppl_srcdir}/units/*.service            -t %{buildroot}%{_prefix}/lib/systemd/system
+%{__install} -m 0644 -D    %{suppl_srcdir}/firewallsvcs/*.xml         -t %{buildroot}%{_prefix}/lib/firewalld/services
+%{__install} -m 0644 -D    %{suppl_srcdir}/etc/*                      -t %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -m 0644 -D    %{suppl_srcdir}/sysconfig/%{name}          -T %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
 
 %{?ldconfig_scriptlets}
@@ -180,7 +178,7 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc) gnosis-build
 %config(noreplace) %{_sysconfdir}/%{name}/validator-config.toml
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 %{_prefix}/lib/systemd/system/nimbus-eth2-validator.service
-%{_bindir}/nimbus_validator_node
+%{_bindir}/nimbus_validator_client
 
 
 # Nimbus Signer Node

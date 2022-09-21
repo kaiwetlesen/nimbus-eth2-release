@@ -1,4 +1,12 @@
 #!/bin/bash
+
+function move_rpms() {
+	chmod -R a+r ${HOME}/rpmbuild/RPMS
+	if [ -d /rpms ]; then
+		cp -rv ${HOME}/rpmbuild/RPMS/* /rpms
+	fi
+}
+
 set -e
 if [ "$1" == "--buildvarsfile" ]; then
 	shift
@@ -23,19 +31,18 @@ dnf -y builddep $spec
 if [ -f "$buildvars" ]; then
 	echo '----------------------- Fetching sources -----------------------'
 	while read version; do
-		spectool --debug --get-files --all --sourcedir --define="target_ver $version" $spec
+		spectool --debug --get-files --all --sourcedir --define="target_pkgver $version" $spec
 	done < $buildvars
 	wait
 	echo '----------------------- Running builds -----------------------'
 	while read version; do
-		rpmbuild -D "target_ver $version" -bb $spec
+		rpmbuild -D "target_pkgver $version" -bb $spec
+		# Move incrementally as builds finish
+		move_rpms
 	done < builds.txt
 	wait
 else
 	spectool --debug --get-files --all --sourcedir $spec
 	rpmbuild -bb $spec
-fi
-chmod -R a+r ${HOME}/rpmbuild/RPMS
-if [ -d /rpms ]; then
-	cp ${HOME}/rpmbuild/RPMS/* /rpms
+	move_rpms
 fi
