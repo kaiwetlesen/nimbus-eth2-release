@@ -8,5 +8,6 @@
     any system which will participate in an Ethereum-compatible network which
     provides state snapshots.
   </description>
-  <include service="nimbus-eth2-peering-network"/>
+  <port protocol="tcp" port="9000"/>
+  <port protocol="udp" port="9000"/>
 </service>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Nimbus Eth2 Beacon Metrics</short>
+  <description>
+    This service enables access to the Beacon client metrics endpoint. Enable
+    this on the zone from which you expect to connect in collecting metrics.
+  </description>
+  <port protocol="tcp" port="8008"/>
+</service>

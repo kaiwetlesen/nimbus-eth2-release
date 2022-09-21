@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Nimbus Eth2 Peering - Network</short>
-  <description>This service is used by Nimbus Eth2 for peer connections to an Ethereum2-compatible network. Enable this service to participate in an Ethereum2-compatible network.</description>
-  <!-- Eth2 Peering: -->
-  <port protocol="tcp" port="9000"/>
-  <port protocol="udp" port="9000"/>
-</service>

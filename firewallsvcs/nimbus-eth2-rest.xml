@@ -8,7 +8,6 @@
 
 	Note: it is generally not advised to open this port to the open internet.
   </description>
-  <!-- Eth2 Peering: -->
   <port protocol="tcp" port="5052"/>
   <port protocol="udp" port="5052"/>
 </service>

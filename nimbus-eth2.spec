@@ -55,6 +55,7 @@ git submodule update --init --recursive
 
 %build
 NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
+NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc) gnosis-build
 
 
 %install
@@ -97,15 +98,62 @@ NIMFLAGS='-d:release -d:disableMarchNative' %{__make} -j$(nproc)
 %license LICENSE-MIT LICENSE-APACHEv2
 %doc README-nimbus.md CHANGELOG.md
 %config(noreplace) %{_sysconfdir}/%{name}/beacon-config.toml
-%config(noreplace) %{_sysconfdir}/%{name}/light-beacon-config.toml
-%config(noreplace) %{_sysconfdir}/%{name}/signing-config.toml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_bindir}/nimbus_beacon_node
+%{_datadir}/%{name}/run-*
+%{_datadir}/%{name}/scripts/run-beacon-node.sh
+%{_prefix}/lib/systemd/system/nimbus-eth2-beacon.service
+%{_prefix}/lib/firewalld/services/*
+%{_prefix}/lib/firewalld/services/nimbus-eth2.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-rest.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-peering.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-metrics.xml
+
+
+# Light variant of Nimbus:
+%files light
+%license LICENSE-MIT LICENSE-APACHEv2
+%doc README-nimbus.md CHANGELOG.md
+%config(noreplace) %{_sysconfdir}/%{name}/light-client-config.toml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_prefix}/lib/systemd/system/nimbus-eth2-light-client.service
+%{_bindir}/nimbus_light_client
+%{_prefix}/lib/firewalld/services/nimbus-eth2-peering.xml
+
+
+# Gnosis variant Nimbus:
+%files gnosis
+%license LICENSE-MIT LICENSE-APACHEv2
+%doc README-nimbus.md CHANGELOG.md
+%config(noreplace) %{_sysconfdir}/%{name}/gnosis-beacon-config.toml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_prefix}/lib/systemd/system/nimbus-eth2-gnosis-beacon.service
+%{_bindir}/nimbus_beacon_node_gnosis
+%{_prefix}/lib/firewalld/services/nimbus-eth2.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-rest.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-peering.xml
+%{_prefix}/lib/firewalld/services/nimbus-eth2-metrics.xml
+
+
+# Nimbus Validator Node
+%files validator
+%license LICENSE-MIT LICENSE-APACHEv2
+%doc README-nimbus.md CHANGELOG.md
 %config(noreplace) %{_sysconfdir}/%{name}/validator-config.toml
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
-%{_bindir}/nimbus_*
-%{_datadir}/%{name}/run-*
-%{_datadir}/%{name}/scripts/*
-%{_prefix}/lib/systemd/system/*
-%{_prefix}/lib/firewalld/services/*
+%{_prefix}/lib/systemd/system/nimbus-eth2-validator.service
+%{_bindir}/nimbus_validator_node
+
+
+# Nimbus Signer Node
+%files signing
+%license LICENSE-MIT LICENSE-APACHEv2
+%doc README-nimbus.md CHANGELOG.md
+%config(noreplace) %{_sysconfdir}/%{name}/signing-config.toml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_prefix}/lib/systemd/system/nimbus-eth2-signing.service
+%{_bindir}/nimbus_signing_node
+
 
 # Utils:
 #  build/logtrace
