@@ -30,19 +30,34 @@ mobile devices -- and multi-purpose servers.
 %package	light
 Summary:	Light version of %{name}
 
+%description	light
+A lighter version of the %{name} client, does not execute a full beacon node.
+
 
 %package	gnosis
 Summary:	Gnosis (formerly xDAI) compatible build of %{name}
+
+%description	gnosis
+A fork of %{name} with parameters specifically adjusted for compatibility with
+the Gnosis chain.
 
 
 %package	validator
 Summary:	Validator client for %{name}
 Requires:   %{name}%{?_isa} = %{version}-%{release}
 
+%description	validator
+A standalone validator client which can connect to the beacon chain client.
+Allows running validator as a separate process from %{name}.
+
 
 %package	signing
 Summary:	Signing client for %{name}
 Requires:   %{name}%{?_isa} = %{version}-%{release}
+
+%description	signing
+A separate standalone signing client which allows the transaction signing
+process to run outside of %{name}.
 
 
 %package    utils
@@ -50,7 +65,8 @@ Summary:    Utilities for %{name}
 Requires:   %{name}%{?_isa} = %{version}-%{release}
 
 %description    utils
-The %{name}-utils package contains utilities for maintaining %{name} data files and establishing testnets.
+The %{name}-utils package contains utilities for maintaining %{name} data files
+and establishing testnets.
 
 
 %package    sim
@@ -58,7 +74,8 @@ Summary:    Simulation software for %{name}
 Requires:   %{name}%{?_isa} = %{version}-%{release}
 
 %description    sim
-The %{name}-sim package contains simulation software for conducting research with %{name}.
+The %{name}-sim package contains simulation software for conducting research
+with %{name}.
 
 
 %prep
