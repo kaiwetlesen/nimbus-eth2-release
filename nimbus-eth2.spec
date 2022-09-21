@@ -6,7 +6,7 @@
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
 %define pkgver %{?target_pkgver}%{!?target_pkgver:22.9.0}
-%define supver %{?target_supver}%{!?target_supver:0.1.0}
+%define supver %{?target_supver}%{!?target_supver:0.1.1}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
 Version:    %{pkgver}
@@ -25,6 +25,24 @@ Nimbus is a client implementation that strives to be as lightweight as
 possible in terms of resources used. This allows it to perform well on
 embedded systems, resource-restricted devices -- including Raspberry Pis and
 mobile devices -- and multi-purpose servers.
+
+
+%package	light
+Summary:	Light version of %{name}
+
+
+%package	gnosis
+Summary:	Gnosis (formerly xDAI) compatible build of %{name}
+
+
+%package	validator
+Summary:	Validator client for %{name}
+Requires:   %{name}%{?_isa} = %{version}-%{release}
+
+
+%package	signing
+Summary:	Signing client for %{name}
+Requires:   %{name}%{?_isa} = %{version}-%{release}
 
 
 %package    utils
