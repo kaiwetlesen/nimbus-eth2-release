@@ -5,7 +5,7 @@
 # Globals description:
 # Target Version (target_pkgver): Indicates the current package version.
 # Target Version (target_supver): Indicates the supplemental files package version.
-%define pkgver %{?target_pkgver}%{!?target_pkgver:22.9.1}
+%define pkgver %{?target_pkgver}%{!?target_pkgver:22.10.0}
 %define supver %{?target_supver}%{!?target_supver:0.1.1}
 Name:       nimbus-eth2
 Vendor:     Status Research & Development GmbH.
